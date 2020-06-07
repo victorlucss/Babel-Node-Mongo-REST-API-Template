@@ -1,0 +1,32 @@
+{
+  "name": "commerce",
+  "version": "0.0.0",
+  "description": "commerce",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lumnisoft/cmc-commerce.git"
+  },
+  "author": "Lumnisoft",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lumnisoft/cmc-commerce/issues"
+  },
+  "homepage": "https://github.com/Lumnisoft/cmc-commerce#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dot-env": "0.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.18",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.4",
+    "yup": "^0.29.1"
+  }
+}
