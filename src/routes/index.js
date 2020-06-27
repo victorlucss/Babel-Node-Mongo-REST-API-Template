@@ -1,10 +1,14 @@
 import UserRoute from "./UserRoute";
+import ProfileRoute from "./ProfileRoute";
+import RoleRoute from "./RoleRoute";
 
 export default class Routes {
     constructor(app){
         this.app = app;
         this.routes = [
             UserRoute,
+            ProfileRoute,
+            RoleRoute
         ];
     }
 
