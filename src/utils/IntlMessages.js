@@ -1,6 +1,11 @@
 const languages = {
     enUS: {
-        userNotFound: (id) => `User with id ${id} not found!`
+        userNotFound: (id) => `User with id ${id} not found!`,
+        profileNotFound: (field, val) => `Profile with ${field} ${val} not found!`,
+        profileDeleted: id => `Profile with id ${id} deleted!`,
+        bodyMustBeArray: arrayOf => `Body must be array ${arrayOf ? `of ${arrayOf}` : ''}`,
+        roleNotPresent: role => `Unauthorized! Role ${role} must be present!`,
+        unauthorizedAccess: `Unauthorized!`,
     },
 }
 
