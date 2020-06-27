@@ -15,6 +15,8 @@ export default class UserController {
             const user = req.body;
     
             const foundUser = await this.repository.findOneByEmail(user.email);
+
+            foundUser._doc.profile.roles.map((v, index) => foundUser._doc.profile.roles[index] = v.name);
     
             const validPass = checkEncrypt(user.password, foundUser.password);
     
@@ -25,6 +27,8 @@ export default class UserController {
             const token = jwt.sign({
                 id: foundUser._id,
                 email: foundUser.email,
+                profile: foundUser.profile.name,
+                roles: foundUser.profile.roles
                 },
                 environment.privateJWT,
                 { expiresIn: "7d" }

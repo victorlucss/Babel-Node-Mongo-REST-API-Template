@@ -3,6 +3,7 @@ class GlobalHandler {
         this.errorTypes = {
             'MNGE': 'MongoError',
             'VDTE': 'ValidationError',
+            'ATHE': 'AuthorizationError',
             'ITRE': 'InternalError',
         }
     }
@@ -43,12 +44,26 @@ class GlobalHandler {
         return this.makeError()
     }
 
+    #handleAuthError(error) {
+        if(error.message && error.code){
+            return this.makeError(error.message, 403, 'ATHE')
+        }else if(error.message) {
+            let errorCode = (error.code) ? error.code : 403;
+            return this.makeError(error.message, errorCode, 'ATHE')
+        }
+
+        console.error(error);
+        return this.makeError()
+    }
+
     handle(error) {
         if(error){
             if(error.name === 'MongoError'){
                 return this.#handleMongoError(error);
             }else if(error.name === 'ValidationError'){ // O Mongoose também poder jogar excessão ValidationError, validar isso dps
                 return this.#handleYupError(error);
+            }else if(error.name === 'AuthorizationError'){ // O Mongoose também poder jogar excessão ValidationError, validar isso dps
+                return this.#handleAuthError(error);
             }
         }
 
