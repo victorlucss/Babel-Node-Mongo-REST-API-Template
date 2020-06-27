@@ -12,6 +12,11 @@ const schema = new Schema({
     default: "",
   },
 
+  profile: {
+    type: String,
+    ref: "Profile"
+  },
+
   lastUpdated: {
     type: Date,
     default: Date.now(),
