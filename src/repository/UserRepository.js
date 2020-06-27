@@ -17,7 +17,7 @@ export default class UserRepository {
     }
 
     /**
-     * List all users in DB filtering by e-mail and return the encoded password
+     * List all users in DB filtering by e-mail and return the encoded password and profiles
      * @param {string} email
      * @memberof UserRepository
     */
@@ -25,6 +25,14 @@ export default class UserRepository {
     let foundUser = await UserModel
         .findOne({
             email: email
+        })
+        .populate({
+            path: 'profile',
+            select: 'roles name -_id',
+            populate: {
+                path: 'roles',
+                select: 'name -_id'
+            }
         });
     
     if(!foundUser) {
